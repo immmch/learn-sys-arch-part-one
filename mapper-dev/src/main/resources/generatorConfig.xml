@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+
+  <!-- 导入配置-->
+  <properties resource="config.properties" />
+
+  <!-- 指定数据连接驱动jar地址-->
+  <classPathEntry location="${jdbc.driver.path}" />
+  <context id="sqlserverTables" targetRuntime="MyBatis3" defaultModelType="flat" >
+
+
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+    <!-- 这里引入扩展插件 -->
+    <plugin type="run.rainyday.generator.MybatisPaginationUtil" />
+    <!-- 配置生成pojo的序列化的插件，mybatis支持很多插件，这些插件都在 org.mybatis.generator.plugins包下  -->
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+    <!-- 配置生成pojo的toString()方法的插件，mybatis支持很多插件，这些插件都在 org.mybatis.generator.plugins包下 -->
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+    <commentGenerator type="run.rainyday.generator.MyCommentGenerator">
+      <property name="suppressDate" value="true"/>
+      <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+      <property name="suppressAllComments" value="true"/>
+      <!-- 是否添加数据表中字段的注释 true：是 ： false:否 -->
+      <property name="addRemarkComments" value="true"/>
+    </commentGenerator>
+    
+    <!--数据库链接URL，用户名、密码 -->
+    <jdbcConnection driverClass="${jdbc.driverClassName}"
+                    connectionURL="${jdbc.url}"
+                    userId="${jdbc.username}"
+                    password="${jdbc.password}">
+    </jdbcConnection>
+
+    <!--自定义转换数据类型-->
+    <javaTypeResolver>
+      <!--是否生成BigDecimal类型-->
+      <property name="forceBigDecimals" value="true"></property>
+    </javaTypeResolver>
+
+    <!-- 生成模型的包名和位置-->
+    <javaModelGenerator targetPackage="run.rainyday.module" targetProject="domain-dev\src\main\java" >
+    	<property name="enableSubPackages" value="true"/>  
+        <property name="trimStrings" value="true"/> 
+    </javaModelGenerator>
+    
+    <!-- 生成映射文件的包名和位置--> 
+    <sqlMapGenerator targetPackage="mapper" targetProject="mapper-dev\src\main\resources" >
+    	<property name="enableSubPackages" value="true"/>
+    </sqlMapGenerator>
+    
+    <!-- 生成DAO的包名和位置--> 
+    <javaClientGenerator targetPackage="run.rainyday.mapper.automatic" targetProject="mapper-dev\src\main\java" type="XMLMAPPER">
+    	<property name="enableSubPackages" value="true"/>
+    </javaClientGenerator>
+    
+    <!-- 要生成哪些表 -->
+    <table tableName="category" domainObjectName="Category"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="carousel" domainObjectName="Carousel"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="items" domainObjectName="Items"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="items_comments" domainObjectName="ItemsComments"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="items_img" domainObjectName="ItemsImg"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="items_param" domainObjectName="ItemsParam"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="items_spec" domainObjectName="ItemsSpec"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="order_items" domainObjectName="OrderItems"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="order_status" domainObjectName="OrderStatus"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="orders" domainObjectName="Orders"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="stu" domainObjectName="Stu"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="user_address" domainObjectName="UserAddress"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="users" domainObjectName="Users"   enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+  </context>
+</generatorConfiguration>
