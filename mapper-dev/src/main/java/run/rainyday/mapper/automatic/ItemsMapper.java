@@ -2,9 +2,10 @@ package run.rainyday.mapper.automatic;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 import run.rainyday.module.Items;
 import run.rainyday.module.ItemsExample;
-
+@Repository
 public interface ItemsMapper {
     long countByExample(ItemsExample example);
 
